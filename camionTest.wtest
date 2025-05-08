@@ -1,9 +1,62 @@
+import cosas.*
 import camion.*
 
 describe "group of test for camion" {
 
-  test "first test" {
-    assert.that(true)
+  test "El camion trasporta a bumblebee como robot y su peligrosidad es " {
+    bumblebee.trasformacion(robot)
+    camion.cargar(bumblebee)
+    assert.equals(1800, camion.pesoTotal())
+  }
+  test "El camion trasporta algo que posee un peso par"{
+    camion.cargar(nightRider)
+    assert.that(camion.esPesoParDeCosas())
+  }
+  test "El camion trasporta algo que pese 500"{
+    camion.cargar(nightRider)
+    assert.that(camion.cosaQuePese(500))
+  }
+  test "El nivel definido de peligrosidad de es 10"{
+    camion.cargar(nightRider)
+    camion.cargar(bumblebee)
+    assert.equals(10,camion.controlDePeligrosidad())
+  }
+  test "El camion esta exedido de peso"{
+    camion.cargar(nightRider)
+    assert.notThat(camion.estaExedidoDePeso())
+  }
+  test "El camion puede circular por la carretera" {
+    camion.cargar(nightRider)
+    camion.cargar(bumblebee)
+    assert.that(camion.puedeCircular(20))
   }
 
+  test"El camion lleva un objeto con peso entre 10 y 20"{
+    camion.cargar(nightRider)
+    camion.cargar(bumblebee)
+    camion.cargar(arena)
+    assert.that(camion.cosaConPesoEntre(10, 20))
+  }
+  test"El objeto con mayor peso que llevar el camion"{
+    camion.cargar(nightRider)
+    camion.cargar(bumblebee)
+    camion.cargar(arena)
+    assert.equals(bumblebee, camion.cosaConMayorPeso())
+  }
+  test"El peso del camion es de si lleva 150 de arena"{
+    arena.peso(150)
+    camion.cargar(arena)
+    assert.equals(1150, camion.pesoTotal())
+  }
+  test"El camion lleva una bateria antiaerea con misiles"{
+    bateriaAntiaerea.cargarMisiles()
+    camion.cargar(bateriaAntiaerea)
+    assert.equals(100, camion.controlDePeligrosidad())
+  }
+  test "El camion lleva un embalaje"{
+    paqueteLadrilo.ladrillos(80)
+    embalaje.objeto(paqueteLadrilo)
+    camion.cargar(embalaje)
+    assert.equals(1160, camion.pesoTotal())
+  }
 }

@@ -2,8 +2,34 @@ import cosas.*
 
 describe "group of test for cosas" {
 
-  test "first test" {
-    assert.that(true)
+  test "Un paquete de 30 ladrillos pesa 66 " {
+    paqueteLadrilo.ladrillos(33)
+    assert.equals(66, paqueteLadrilo.peso())
   }
-
+  test "Una bateria antiaerea sin misiles no tiene peligrosidad"{
+    bateriaAntiaerea.sacarMisiles()
+    assert.equals(0, bateriaAntiaerea.peligrosidad())
+  }
+  test"El conenedor con 3 objetos adentro pesa 910"{
+    contenedor.agregar(arena)
+    contenedor.agregar(nightRider)
+    contenedor.agregar(bateriaAntiaerea)
+    assert.equals(910, contenedor.peso())
+  }
+  test"El conenedor con objetos adentro tiene una peligrosidad de "{
+    contenedor.agregar(arena)
+    contenedor.agregar(nightRider)
+    contenedor.agregar(bateriaAntiaerea)
+    assert.equals(100, contenedor.peligrosidad())
+  }
+  test"El embalaje con 30 kilos de residuos radioactivos tiene una peligrosidad de 100"{
+    residuosRadioactivos.peso(30)
+    embalaje.objeto(residuosRadioactivos)
+    assert.equals(100, embalaje.peligrosidad())
+  }
+  test"El embalaje con 30 kilos de residuos radioactivos"{
+    residuosRadioactivos.peso(30)
+    embalaje.objeto(residuosRadioactivos)
+    assert.equals(30, embalaje.peso())
+  }
 }
