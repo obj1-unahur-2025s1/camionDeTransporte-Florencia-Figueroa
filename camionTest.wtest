@@ -2,7 +2,6 @@ import cosas.*
 import camion.*
 
 describe "group of test for camion" {
-
   test "El camion trasporta a bumblebee como robot y su peligrosidad es " {
     bumblebee.trasformacion(robot)
     camion.cargar(bumblebee)
